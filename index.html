@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ramya Madugula | Cybersecurity Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#FFF6F8; --ink:#111; --muted:#4b4147; --rose:#B3265F; --pink:#D93A8B; --blush:#FCE4EC; --line:#EBCFD8; --stage:#EFE2E7;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0}
+p{margin:0 0 1rem;max-width:62ch}
+a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+a:hover{color:var(--rose)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+
+#root{container-type:inline-size;container-name:site}
+
+/* ---------- the site (responds to the width of its frame) ---------- */
+.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:6px 24px;padding:16px 32px}
+.nav a{font-weight:500}
+.nav a:first-child{font-family:var(--serif);font-weight:600;font-size:1.15rem}
+.nav a[aria-current="true"]{text-decoration-thickness:3px;text-decoration-color:var(--rose)}
+.page{max-width:1000px;margin:0 auto;padding:0 32px}
+.sec{padding:64px 0;border-top:1px solid var(--line);scroll-margin-top:60px}
+.sec.first{border-top:0;padding-top:48px}
+h2{font-size:2.1rem;margin-bottom:1.4rem}
+h3{font-size:1.15rem}
+
+/* photo tiles */
+.tile{border-radius:26px;overflow:hidden;display:flex;align-items:flex-end;background:#F6CFDA;width:100%}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .tag{margin:12px;padding:3px 12px;border-radius:999px;background:var(--bg);font-size:.85rem;font-weight:600}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.tile.enter{animation:rise .7s cubic-bezier(.2,.8,.2,1) backwards}
+
+/* hero */
+.hero{display:flex;align-items:center;gap:56px}
+.hero-text{flex:1 1 50%;min-width:0}
+.hero h1{font-size:4.4rem;letter-spacing:-.02em;margin-bottom:1.1rem}
+.intro{font-weight:500;font-size:1.1rem}
+.role{font-weight:700;margin-bottom:.5rem}
+.icons{display:flex;flex-wrap:wrap;gap:10px;margin:1.2rem 0 .8rem}
+.icons a{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;text-decoration:none}
+.icons.center{justify-content:center}
+.resume{font-family:var(--serif);font-weight:600;font-size:1.4rem}
+.collage{flex:1 1 44%;max-width:440px;display:flex;gap:16px;align-items:flex-start}
+.col{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.col.b{margin-top:76px}
+.t1{aspect-ratio:1/1.1}.t2{aspect-ratio:1/1;background:#F2BCCD}.t3{aspect-ratio:1/.9;background:#F9DCE5}
+
+/* about */
+.about{display:flex;gap:56px;align-items:flex-start}
+.about .tile{flex:0 0 280px;width:280px;aspect-ratio:4/5}
+.about-text{flex:1;min-width:0}
+.sub{font-size:1.1rem;font-weight:700;margin:2rem 0 .2rem;font-family:var(--sans)}
+.group h3{font-family:var(--sans);font-size:1rem;font-weight:600;margin-top:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:.5rem 0}
+.chip{padding:4px 14px;border-radius:999px;background:var(--blush);font-size:.95rem}
+.note{color:var(--muted);font-size:.95rem}
+
+/* timeline */
+.tl{border-left:2px solid var(--ink);margin:0 0 3.5rem 4px;padding-left:24px}
+.job{padding-bottom:1.8rem}
+.job .when{color:var(--muted);font-size:.95rem}
+.job ul{margin:.4rem 0;padding-left:1.1rem;max-width:62ch;font-size:.97rem}
+.tools{font-size:.92rem;color:var(--muted)}
+
+/* projects + certs */
+.cards{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:3.5rem}
+.pcard{flex:1 1 200px;min-height:210px;border:2px solid var(--pink);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.pcard p{margin:0;font-size:.95rem}
+.pcard .tags{font-size:.88rem;color:var(--muted);margin-top:auto}
+.certs{display:flex;flex-wrap:wrap;gap:16px}
+.cert{flex:1 1 calc(50% - 8px);border:2px solid var(--ink);border-radius:18px;padding:16px 20px;min-height:72px}
+.cert strong{display:block}
+.cert span{color:var(--muted);font-size:.93rem}
+
+/* contact */
+.contact{text-align:center}
+.contact p{margin-left:auto;margin-right:auto}
+form{max-width:520px;margin:1.8rem auto 0;text-align:left;display:grid;gap:14px}
+label{font-weight:600;font-size:.95rem}
+input,textarea{width:100%;margin-top:6px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--ink);background:#fff;font:inherit;color:var(--ink)}
+textarea{min-height:120px;resize:vertical}
+.send{justify-self:start;border:0;border-radius:999px;background:var(--ink);color:var(--bg);padding:11px 24px;font:inherit;font-weight:600;cursor:pointer}
+.send:hover{background:var(--rose)}
+.foot{text-align:center;color:var(--muted);font-size:.9rem;padding:0 24px 32px}
+
+/* ---------- phone layout: one column ---------- */
+@container site (max-width:760px){
+  .nav{padding:12px 20px;gap:4px 20px}
+  .nav a:first-child{flex-basis:100%}
+  .page{padding:0 20px}
+  .sec{padding:44px 0;scroll-margin-top:96px}
+  .sec.first{padding-top:32px}
+  h2{font-size:1.8rem}
+  .hero{flex-direction:column;align-items:stretch;gap:32px}
+  .hero h1{font-size:2.7rem}
+  .collage{max-width:none}
+  .col.b{margin-top:44px}
+  .about{flex-direction:column;gap:28px}
+  .about .tile{flex:none;width:min(100%,300px)}
+  .pcard{flex-basis:100%;min-height:0}
+  .cert{flex-basis:100%}
+}
+@media (prefers-reduced-motion:reduce){.tile.enter{animation:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const { useState, useEffect, useRef } = React;
+const html = htm.bind(React.createElement);
+
+/* =====================================================
+   EDIT YOUR CONTENT HERE. The whole site is built from this block.
+   Anything marked SAMPLE is placeholder text to replace.
+   ===================================================== */
+const SITE = {
+  name: "Ramya Madugula",
+  role: "Vulnerability Operations Engineer at Abbott",
+  intro: "Hi, I’m Ramya. I’m a cybersecurity engineer with a focus on mobile app and LLM security. In my free time, I love to dance and perform, attend professional events, and read romance novels.",
+  email: "you@example.com",              // SAMPLE: replace with your email
+  links: {                                // SAMPLE: replace each "#" with your real link
+    resume: "#",
+    linkedin: "https://www.linkedin.com/",
+    github: "https://github.com/",
+    medium: "https://medium.com/",
+    calendly: "https://calendly.com/",
+  },
+  // Photos: leave src empty for a placeholder. Later, set src to an image file path.
+  photos: [
+    { label: "Professional", src: "" },
+    { label: "On stage", src: "" },
+    { label: "With my dog", src: "" },
+  ],
+  aboutPhoto: { label: "Add a photo of you", src: "" },
+  story: [
+    "SAMPLE: Start with how you got into security: what made you curious, and what pulled you toward mobile app and LLM security.",
+    "SAMPLE: Mention the programs and communities that shaped you, like Break Through Tech, WiNC@UCR, and Cyber@UCR.",
+    "SAMPLE: Close with the person outside of work: dancing, performing, romance novels, and your dog.",
+  ],
+  // Only list tools you have actually used.
+  skills: [
+    { group: "Mobile app security", items: ["OWASP MASVS", "MobSF", "Frida"] },
+    { group: "LLM security", items: ["OWASP Top 10 for LLMs", "Prompt injection testing"] },
+    { group: "Vulnerability management", items: ["Nessus", "CVSS scoring", "Remediation tracking"] },
+    { group: "Scripting", items: ["Python", "Bash"] },
+  ],
+  jobs: [
+    { title: "Vulnerability Operations Engineer", org: "Abbott", url: "#", when: "Jan 2026 to present",
+      bullets: ["SAMPLE: Describe an outcome in general terms, with no confidential details."], tools: "Tools: add what you use" },
+    { title: "Intern", org: "Company name", url: "#", when: "June 2025 to September 2025",
+      bullets: ["SAMPLE: What you worked on and what improved."], tools: "" },
+    { title: "ULA Tutor", org: "UCR", url: "#", when: "2024 to 2025",
+      bullets: ["SAMPLE: Who you helped and how it went."], tools: "" },
+  ],
+  projects: [
+    { title: "Mobile app security assessment", text: "SAMPLE: The problem, your approach, and what you found.", tags: "Android, MASVS", url: "#" },
+    { title: "LLM prompt injection lab", text: "SAMPLE: What you tested and what you learned.", tags: "Python, LLMs", url: "#" },
+    { title: "Home lab detections", text: "SAMPLE: What you built and what it catches.", tags: "SIEM, Sigma", url: "#" },
+    { title: "CTF writeup", text: "SAMPLE: A challenge you solved and how.", tags: "CTF, Medium", url: "#" },
+  ],
+  certs: [
+    { name: "CompTIA Security+", detail: "Add year or verification link" },
+    { name: "Break Through Tech", detail: "Program" },
+    { name: "WiNC@UCR and Cyber@UCR", detail: "Clubs" },
+    { name: "SWE, WeCode, GMiS", detail: "Conferences" },
+  ],
+};
+
+const SECTIONS = [
+  { id: "home", label: SITE.name },
+  { id: "about", label: "About Me" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact Me" },
+];
+
+/* ---------- icons ---------- */
+function Icon({ name }) {
+  const p = { width: 28, height: 28, viewBox: "0 0 24 24", "aria-hidden": "true", focusable: "false" };
+  const k = "#FFF6F8";
+  if (name === "email") return html`<svg ...${p} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7.5L12 13.5l8.5-6"/></svg>`;
+  if (name === "calendly") return html`<svg ...${p} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>`;
+  if (name === "linkedin") return html`<svg ...${p} fill="currentColor"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><circle cx="8" cy="8.3" r="1.4" fill=${k}/><rect x="6.8" y="10.4" width="2.4" height="6.6" fill=${k}/><path fill=${k} d="M11 10.4h2.3v1c.4-.7 1.2-1.2 2.3-1.2 2 0 2.6 1.3 2.6 3.1V17h-2.4v-3.4c0-.8-.2-1.4-1-1.4s-1.4.6-1.4 1.5V17H11z"/></svg>`;
+  if (name === "medium") return html`<svg ...${p} fill="currentColor"><circle cx="7" cy="12" r="4.6"/><ellipse cx="16" cy="12" rx="2.4" ry="4.6"/><rect x="20.2" y="7.6" width="1.5" height="8.8" rx=".75"/></svg>`;
+  return html`<svg ...${p} fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>`;
+}
+
+function Icons({ names, center }) {
+  const L = SITE.links;
+  const all = {
+    linkedin: ["LinkedIn", L.linkedin], github: ["GitHub", L.github], medium: ["Medium blog", L.medium],
+    calendly: ["Book a time on Calendly", L.calendly], email: ["Email me", "mailto:" + SITE.email],
+  };
+  return html`<div class=${"icons" + (center ? " center" : "")}>
+    ${names.map(n => html`<a key=${n} href=${all[n][1]} aria-label=${all[n][0]} title=${all[n][0]}><${Icon} name=${n} /></a>`)}
+  </div>`;
+}
+
+function Tile({ p, cls, delay }) {
+  return html`<div class=${"tile enter " + cls} style=${{ animationDelay: (delay || 0) + "s" }}>
+    ${p.src ? html`<img src=${p.src} alt=${p.label} />` : html`<span class="tag">${p.label}</span>`}
+  </div>`;
+}
+
+function Nav({ active, goTo }) {
+  return html`<nav class="nav" aria-label="Main">
+    ${SECTIONS.map(s => html`<a key=${s.id} href=${"#" + s.id} onClick=${goTo(s.id)} aria-current=${active === s.id}>${s.label}</a>`)}
+  </nav>`;
+}
+
+function Home() {
+  const [a, b, c] = SITE.photos;
+  return html`<section id="home" class="sec first"><div class="page hero">
+    <div class="hero-text">
+      <h1>${SITE.name}</h1>
+      <p class="role">${SITE.role}</p>
+      <p class="intro">${SITE.intro}</p>
+      <${Icons} names=${["linkedin", "github", "email", "medium", "calendly"]} />
+      <a class="resume" href=${SITE.links.resume}>Resume</a>
+    </div>
+    <div class="collage">
+      <div class="col"><${Tile} p=${a} cls="t1" /><${Tile} p=${c} cls="t3" delay=${0.24} /></div>
+      <div class="col b"><${Tile} p=${b} cls="t2" delay=${0.12} /></div>
+    </div>
+  </div></section>`;
+}
+
+function About() {
+  return html`<section id="about" class="sec"><div class="page">
+    <div class="about">
+      <${Tile} p=${SITE.aboutPhoto} cls="" />
+      <div class="about-text">
+        <h2>My story</h2>
+        ${SITE.story.map((t, i) => html`<p key=${i}>${t}</p>`)}
+      </div>
+    </div>
+    <p class="sub">Skills and tools</p>
+    <p class="note">Tools I’ve used, grouped by what they’re for.</p>
+    ${SITE.skills.map(g => html`<div class="group" key=${g.group}>
+      <h3>${g.group}</h3>
+      <div class="chips">${g.items.map(i => html`<span class="chip" key=${i}>${i}</span>`)}</div>
+    </div>`)}
+  </div></section>`;
+}
+
+function Experience() {
+  return html`<section id="experience" class="sec"><div class="page">
+    <h2>Experience</h2>
+    <div class="tl">
+      ${SITE.jobs.map(j => html`<div class="job" key=${j.title + j.org}>
+        <h3>${j.title} @ <a href=${j.url}>${j.org}</a></h3>
+        <div class="when">${j.when}</div>
+        <ul>${j.bullets.map((b, i) => html`<li key=${i}>${b}</li>`)}</ul>
+        ${j.tools && html`<div class="tools">${j.tools}</div>`}
+      </div>`)}
+    </div>
+    <h2>Projects</h2>
+    <div class="cards">
+      ${SITE.projects.map(p => html`<div class="pcard" key=${p.title}>
+        <h3>${p.title}</h3>
+        <p>${p.text}</p>
+        <div class="tags">${p.tags}</div>
+        <a href=${p.url}>View project</a>
+      </div>`)}
+    </div>
+    <h2>Certifications</h2>
+    <div class="certs">
+      ${SITE.certs.map(c => html`<div class="cert" key=${c.name}><strong>${c.name}</strong><span>${c.detail}</span></div>`)}
+    </div>
+  </div></section>`;
+}
+
+function Contact() {
+  const [f, setF] = useState({ name: "", email: "", message: "" });
+  const set = k => e => setF({ ...f, [k]: e.target.value });
+  const send = e => {
+    e.preventDefault();
+    const body = f.message + "\n\nFrom: " + f.name + " (" + f.email + ")";
+    window.location.href = "mailto:" + SITE.email + "?subject=" + encodeURIComponent("Message from " + f.name) + "&body=" + encodeURIComponent(body);
+  };
+  return html`<section id="contact" class="sec contact"><div class="page">
+    <h2>Let’s get in touch</h2>
+    <${Icons} names=${["linkedin", "email", "calendly"]} center=${true} />
+    <form onSubmit=${send}>
+      <label>Your name<input required value=${f.name} onInput=${set("name")} autocomplete="name" /></label>
+      <label>Your email<input required type="email" value=${f.email} onInput=${set("email")} autocomplete="email" /></label>
+      <label>Message<textarea required value=${f.message} onInput=${set("message")}></textarea></label>
+      <button class="send" type="submit">Send message</button>
+    </form>
+  </div></section>`;
+}
+
+function Site({ frameRef }) {
+  const [active, setActive] = useState("home");
+  useEffect(() => {
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { root: frameRef.current, rootMargin: "-30% 0px -60% 0px" });
+    SECTIONS.forEach(s => { const el = document.getElementById(s.id); if (el) io.observe(el); });
+    return () => io.disconnect();
+  }, []);
+  const goTo = id => e => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (el) el.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
+  };
+  return html`<${React.Fragment}>
+    <${Nav} active=${active} goTo=${goTo} />
+    <main><${Home} /><${About} /><${Experience} /><${Contact} /></main>
+    <div class="foot">© ${new Date().getFullYear()} ${SITE.name}</div>
+  <//>`;
+}
+
+function App() {
+  return html`<${Site} frameRef=${{ current: null }} />`;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App} />`);
+</script>
+</body>
+</html>
